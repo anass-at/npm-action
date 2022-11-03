@@ -24,7 +24,5 @@ jobs:
     steps:
       - name: run mysql
         run: | 
-
-          sudo apt-get update 
-          sudo apt-get install mysql-server
+          systemctl start mysql
           mysql -e 'CREATE DATABASE salla_db;' -uroot -proot
