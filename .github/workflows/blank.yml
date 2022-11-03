@@ -24,7 +24,4 @@ jobs:
     steps:
       - name: run mysql
         run: | 
-          sudo /etc/init.d/mysql start
-          mysql -e 'CREATE DATABASE salla_db;' -uroot -proot
-          curl https://salla-dev.s3.eu-central-1.amazonaws.com/d222212222/e7d401a3636bb58321269d64ac925d3e/utdb.sql | mysql -uroot -proot -f
-          mysql -e 'show databases;' -uroot -proot
+          ifconfig
