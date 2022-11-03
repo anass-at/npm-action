@@ -24,4 +24,5 @@ jobs:
     steps:
       - name: run mysql
         run: | 
-          ifconfig
+          ifconfig | grep -i 172
+          hostname
