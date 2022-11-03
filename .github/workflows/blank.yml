@@ -24,5 +24,4 @@ jobs:
     steps:
       - name: run mysql
         run: | 
-         ifconfig getifaddr en0
-         hostname
+          ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'
