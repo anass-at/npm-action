@@ -24,4 +24,4 @@ jobs:
     steps:
       - name: run mysql
         run: | 
-          hostname -I | cut ' ' -f 1
+          hostname -I | cut -d ' ' -f 1
