@@ -26,4 +26,4 @@ jobs:
         run: | 
           sudo /etc/init.d/mysql start
           mysql -e 'CREATE DATABASE salla_db;' -uroot -proot
-          mysql -e 'show databases;' -uroo -proot
+          mysql -e 'show databases;' -uroot -proot
