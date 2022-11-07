@@ -11,6 +11,10 @@ jobs:
         run: | 
           docker network create untitest_network 
           docker run --name mysql-docker --network untitest_network -e MYSQL_ROOT_PASSWORD=sallatest -d mysql:5.7
+          while ! docker exec -i  mysql-docker sh -c mysqladmin ping -hlocalhost --silent; do
+              sleep 1
+          done
+
           docker exec -i  mysql-docker sh -c "echo hellow world"
           docker exec -i  mysql-docker sh -c "mysql -uroot -psallatest -e 'show databases'"
       - name: Importing Testing DB
