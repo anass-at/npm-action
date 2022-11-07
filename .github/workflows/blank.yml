@@ -11,6 +11,7 @@ jobs:
         run: | 
           docker network create untitest_network 
           docker run --name mysql-docker --network untitest_network -e MYSQL_ROOT_PASSWORD=sallatest -d mysql
+          docker exec -i  mysql-docker sh -c "echo hellow world"
           curl https://salla-dev.s3.eu-central-1.amazonaws.com/d222212222/e7d401a3636bb58321269d64ac925d3e/utdb.sql | docker exec -i mysql-docker /bin/bash -c " mysql -h localhost -uroot -psallatest -f "
 
       - name: Importing Testing DB
