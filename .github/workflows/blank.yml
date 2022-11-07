@@ -11,11 +11,18 @@ jobs:
         run: | 
           docker network create untitest_network 
           docker run --name mysql-docker --network untitest_network -e MYSQL_ROOT_PASSWORD=sallatest  -d mysql:5.7
+          docker run --name redis --network untitest_network -d redis
+
           while ! docker exec mysql-docker mysql --user=root --password=sallatest -e "status" &> /dev/null ; do
               echo "Waiting for database connection..."
               sleep 2
           done   
          
+          while ! docker exec redis redis-cli ping -e "pong" &> /dev/null ; do
+              echo "Waiting for redis connection..."
+              sleep 2
+          done   
+          
           docker exec -i  mysql-docker sh -c "echo hellow world"
           docker exec -i  mysql-docker sh -c "mysql -uroot -psallatest -e 'show databases'"
       - name: Importing Testing DB
