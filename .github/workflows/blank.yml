@@ -14,7 +14,7 @@ jobs:
         continue-on-error: true
         run: |
           docker ps 
-          curl https://salla-dev.s3.eu-central-1.amazonaws.com/d222212222/e7d401a3636bb58321269d64ac925d3e/utdb.sql | docker exec -i mysql sh -c " mysql -h localhost -uroot -psallatest -f "
+          curl https://salla-dev.s3.eu-central-1.amazonaws.com/d222212222/e7d401a3636bb58321269d64ac925d3e/utdb.sql | docker exec -i mysql /bin/bash -c " mysql -h localhost -uroot -psallatest -f "
           
       - name: show database 
         run: |
