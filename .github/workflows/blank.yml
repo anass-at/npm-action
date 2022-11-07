@@ -10,3 +10,11 @@ jobs:
         run: | 
           docker network create untitest_network 
           docker run --name mysql --network untitest_network -e MYSQL_ROOT_PASSWORD=sallatest -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -d mysql
+      - name: Importing Testing DB
+        continue-on-error: true
+        run: |
+          curl https://salla-dev.s3.eu-central-1.amazonaws.com/d222212222/e7d401a3636bb58321269d64ac925d3e/utdb.sql | docker exec -i mysql mysql -uroot -psallatest -f
+          
+      - name: show database 
+        run: |
+          docker exec -i mysql mysql -e 'show databases;' -uroot -psallatest -f
